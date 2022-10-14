@@ -10,6 +10,7 @@ const INITIAL_ARRAY_LENGTH = 40
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
   const [colors, setColors] = useState({});
+  const [isAnimating, setIsAnimating] = useState(false);
   const length = numbers.length;
 
   const shuffleArrayHandler = () => {
@@ -29,8 +30,29 @@ const App = () => {
   const getAnimationHandler = () => {
     const animations = getAnimations('bubbleSort', [...numbers]);
 
+    for (let i = 0; i < animations.length; i++) {
+      const animation = animations[i];
+      switch (animation.type) {
+        case 'SWAP':
+          setTimeout(() => {
+            const [i, j] = animation.indexes;
+            setNumbers((oldNums) => {
+              const newNums = [...oldNums];
+              let tmp = newNums[i];
+              newNums[i] = newNums[j];
+              newNums[j] = tmp;
+              return newNums;
+            });
+          }, i * 50);
+          break;
+        default:
+          break;
+      }
+    }
 
-    finalSortedAnimation();
+    setTimeout(() => {
+      finalSortedAnimation();
+    }, animations.length * 50);
   }
 
   const finalSortedAnimation = () => {
