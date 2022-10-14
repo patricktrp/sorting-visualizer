@@ -2,10 +2,12 @@ import Bar from './Bar';
 import styles from './Visualizer.module.css';
 
 const Visualizer = (props) => {
+    const colors = props.colors;
+
     return (
         <div className={styles.visualizer}>
-            {props.numbers.map((num) => {
-                return <Bar value={num} key={Math.random()} />;
+            {props.numbers.map((num, idx) => {
+                return <Bar value={num} key={Math.random()} color={colors.hasOwnProperty(idx) ? colors[idx] : 'base'} />;
             })}
         </div>
     )

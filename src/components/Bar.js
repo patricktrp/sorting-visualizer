@@ -2,9 +2,9 @@ import styles from './Bar.module.css';
 
 const Bar = (props) => {
     return (
-        <div className={styles.bar} style={{
+        <div className={`${styles.bar} test`} style={{
             width: '7px',
-            backgroundColor: 'salmon',
+            backgroundColor: props.color === 'base' ? 'salmon' : props.color,
             height: (props.value + 40) * 4 + 'px',
             marginRight: '2px'
         }}>
