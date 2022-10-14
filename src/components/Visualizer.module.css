@@ -1,0 +1,7 @@
+.visualizer {
+    display: flex; 
+    /* align-items: center; */
+    justify-content: center;
+    align-items: flex-end;
+    height: 80vh;
+}
