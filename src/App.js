@@ -5,13 +5,19 @@ import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
 import { createRandomArrayBySize } from './utils';
 
-const INITIAL_ARRAY_LENGTH = 40
+const INITIAL_ARRAY_LENGTH = 40;
+const ANIMATION_SPEED = 20;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
   const [colors, setColors] = useState({});
   const [isAnimating, setIsAnimating] = useState(false);
+  const [algorithm, setAlgorithm] = useState("bubbleSort");
   const length = numbers.length;
+
+  const changeAlgorithmHandler = (newAlgorithm) => {
+    setAlgorithm(newAlgorithm);
+  }
 
   const shuffleArrayHandler = () => {
     setNumbers(createRandomArrayBySize(length));
@@ -28,7 +34,8 @@ const App = () => {
   }
 
   const getAnimationHandler = () => {
-    const animations = getAnimations('bubbleSort', [...numbers]);
+    setIsAnimating(true);
+    const animations = getAnimations(algorithm, [...numbers]);
 
     for (let i = 0; i < animations.length; i++) {
       const animation = animations[i];
@@ -43,7 +50,36 @@ const App = () => {
               newNums[j] = tmp;
               return newNums;
             });
-          }, i * 50);
+          }, i * ANIMATION_SPEED);
+          break;
+        case 'COLOR':
+          setTimeout(() => {
+            const [i, j] = animation.indexes;
+            const color = animation.color;
+            setColors((oldColors) => {
+              const newColors = { ...oldColors };
+              newColors[i] = color;
+              newColors[j] = color;
+              return newColors;
+            });
+          }, i * ANIMATION_SPEED);
+          break;
+        case 'COLOR_RESET':
+          setTimeout(() => {
+            setColors({});
+          }, i * ANIMATION_SPEED);
+          break;
+        case 'COLOR_RESET_BY_INDEX':
+          const indexes = animation.indexes;
+          setTimeout(() => {
+            setColors((oldColors) => {
+              const newColors = { ...oldColors };
+              for (const index of indexes) {
+                delete newColors[index];
+              }
+              return newColors;
+            });
+          }, i * ANIMATION_SPEED);
           break;
         default:
           break;
@@ -52,7 +88,7 @@ const App = () => {
 
     setTimeout(() => {
       finalSortedAnimation();
-    }, animations.length * 50);
+    }, animations.length * ANIMATION_SPEED);
   }
 
   const finalSortedAnimation = () => {
@@ -67,17 +103,20 @@ const App = () => {
     }
     setTimeout(() => {
       setColors({});
-    }, (40 * numbers.length));
-
+      setIsAnimating(false);
+    }, (45 * numbers.length));
   }
 
   return (
     <div className="App">
       <Navbar onShuffleArray={shuffleArrayHandler}
+        isAnimating={isAnimating}
         onSortArray={sortArrayHandler}
         onChangeArraySize={changeArraySizeHandler}
         currentSize={length}
         onAnimate={getAnimationHandler}
+        algorithm={algorithm}
+        onChangeAlgorithm={changeAlgorithmHandler}
       />
       <Visualizer numbers={numbers} colors={colors} />
     </div>
