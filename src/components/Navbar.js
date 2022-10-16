@@ -17,10 +17,10 @@ const Navbar = (props) => {
                 <option value="heapSort">Heapsort</option>
             </select>
             <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={5} max={250} disabled={props.isAnimating} />
-            <a target='_blank' href='https://github.com/patricktrp/sorting-visualizer'>
+            <a target='_blank' rel="noopener noreferrer" href='https://github.com/patricktrp/sorting-visualizer'>
                 <FaGithubSquare />
             </a>
-            <a target='_blank' href='https://www.linkedin.com/in/patrick-treppmann/'>
+            <a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/patrick-treppmann/'>
                 <FaLinkedin />
             </a>
         </div>
