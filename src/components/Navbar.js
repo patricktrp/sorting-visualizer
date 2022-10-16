@@ -1,4 +1,6 @@
 import styles from './Navbar.module.css';
+import { FaGithubSquare } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 
 const Navbar = (props) => {
     return (
@@ -15,6 +17,12 @@ const Navbar = (props) => {
                 <option value="heapSort">Heapsort</option>
             </select>
             <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={5} max={250} disabled={props.isAnimating} />
+            <a target='_blank' href='https://github.com/patricktrp/sorting-visualizer'>
+                <FaGithubSquare />
+            </a>
+            <a target='_blank' href='https://www.linkedin.com/in/patrick-treppmann/'>
+                <FaLinkedin />
+            </a>
         </div>
     )
 };
