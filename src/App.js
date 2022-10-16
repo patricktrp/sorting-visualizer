@@ -81,6 +81,15 @@ const App = () => {
             });
           }, i * ANIMATION_SPEED);
           break;
+        case 'SET_VALUE':
+          setTimeout(() => {
+            setNumbers(oldNumbers => {
+              const newNums = [...oldNumbers];
+              newNums[animation.index] = animation.newValue;
+              return newNums
+            });
+          }, i * ANIMATION_SPEED);
+          break;
         default:
           break;
       }

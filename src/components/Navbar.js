@@ -14,7 +14,7 @@ const Navbar = (props) => {
                 <option value="mergeSort">Mergesort</option>
                 <option value="heapSort">Heapsort</option>
             </select>
-            <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={5} max={150} disabled={props.isAnimating} />
+            <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={5} max={250} disabled={props.isAnimating} />
         </div>
     )
 };
