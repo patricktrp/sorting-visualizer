@@ -13,7 +13,6 @@ const Navbar = (props) => {
 
             <Flex gap={5}>
                 <Button
-                    size='md'
                     onClick={props.onShuffleArray}
                     disabled={props.isAnimating}
                     colorScheme='teal'
@@ -29,7 +28,7 @@ const Navbar = (props) => {
                     <option value="heapSort">Heapsort</option>
                 </Select>
                 <Input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
-                <Button size='md'
+                <Button
                     onClick={props.onAnimate}
                     isLoading={props.isAnimating}
                     loadingText='Animating'

@@ -4,6 +4,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
 import { createRandomArrayBySize } from './utils';
+import { Flex, Box } from '@chakra-ui/react';
+import AlgorithmInfo from './components/AlgorithmInfo';
 
 const INITIAL_ARRAY_LENGTH = 40;
 const ANIMATION_SPEED = 25;
@@ -127,13 +129,15 @@ const App = () => {
         algorithm={algorithm}
         onChangeAlgorithm={changeAlgorithmHandler}
       />
-      <div style={{ display: 'flex' }}>
-        <div style={{ width: '13vw' }}> </div>
-        <div style={{ width: '74vw', border: '1px solid grey', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
+      <Flex>
+        <Box style={{ width: '13vw' }}>
+          <AlgorithmInfo selectedAlgorithm={algorithm} />
+        </Box>
+        <Box style={{ width: '74vw', border: '1px solid grey', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
           <Visualizer numbers={numbers} colors={colors} />
-        </div>
-        <div style={{ width: '13vw' }}> </div>
-      </div>
+        </Box>
+        <Box style={{ width: '13vw' }}> </Box>
+      </Flex>
     </div>
   );
 }
