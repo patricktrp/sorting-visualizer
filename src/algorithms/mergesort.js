@@ -1,7 +1,7 @@
 export const mergeSort = (arr) => {
     const animations = [];
     mergeSortEntryPoint(arr, animations);
-    return animations;
+    return [animations, 0, 0];
 }
 
 const mergeSortEntryPoint = (arr, animations) => {

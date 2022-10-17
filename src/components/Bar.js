@@ -18,7 +18,6 @@ const Bar = (props) => {
         <div className={`${styles.bar} test`} style={{
             width: (widthOfBar - 2) + 'px',
             backgroundColor: props.color === 'base' ? 'salmon' : props.color,
-            // height: (props.value + 40) * 4 + 'px',
             height: heightOfBar + 'px',
             marginRight: '2px'
         }}>

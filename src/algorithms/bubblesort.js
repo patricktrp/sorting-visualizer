@@ -36,9 +36,5 @@ export const bubbleSort = (arr) => {
             color: '#138D75'
         })
     }
-    console.log(`Comparisons: ${comparisons}`);
-    console.log(`Swaps: ${swaps}`);
-    return animations;
+    return [animations, comparisons, swaps];
 }
-
-// TODO: optimized version that checks if sorted each iteration

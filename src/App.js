@@ -6,6 +6,7 @@ import Visualizer from './components/Visualizer';
 import { createRandomArrayBySize } from './utils';
 import { Flex, Box } from '@chakra-ui/react';
 import AlgorithmInfo from './components/AlgorithmInfo';
+import RuntimeInfo from './components/RuntimeInfo';
 
 const INITIAL_ARRAY_LENGTH = 40;
 const ANIMATION_SPEED = 25;
@@ -16,6 +17,10 @@ const App = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [algorithm, setAlgorithm] = useState("bubbleSort");
   const length = numbers.length;
+  const [comparisons, setComparisons] = useState();
+  const [animationDuration, setAnimationDuration] = useState();
+  const [swaps, setSwaps] = useState();
+
 
   const changeAlgorithmHandler = (newAlgorithm) => {
     setAlgorithm(newAlgorithm);
@@ -37,9 +42,13 @@ const App = () => {
 
   const getAnimationHandler = () => {
     setIsAnimating(true);
-    const animations = getAnimations(algorithm, [...numbers]);
+    const [animations, comps, swapis] = getAnimations(algorithm, [...numbers]);
+    setComparisons(comps);
+    setSwaps(swapis);
+    setAnimationDuration((animations.length - 1) * ANIMATION_SPEED);
 
     for (let i = 0; i < animations.length; i++) {
+      if (i === animations.length - 1) console.log(i * ANIMATION_SPEED);
       const animation = animations[i];
       switch (animation.type) {
         case 'SWAP':
@@ -136,7 +145,9 @@ const App = () => {
         <Box style={{ width: '74vw', border: '1px solid grey', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
           <Visualizer numbers={numbers} colors={colors} />
         </Box>
-        <Box style={{ width: '13vw' }}> </Box>
+        <Box style={{ width: '13vw' }}>
+          <RuntimeInfo comparisons={comparisons} duration={animationDuration} swaps={swaps} />
+        </Box>
       </Flex>
     </div>
   );

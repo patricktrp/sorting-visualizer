@@ -31,7 +31,7 @@ export const selectionsort = (arr) => {
         swap(arr, i, smallestIdx);
     }
 
-    return animations;
+    return [animations, 0, 0];;
 }
 
 

@@ -17,7 +17,7 @@ export const heapSort = (arr) => {
         swap(arr, i, 0);
         heapifyDown(arr, 0, i, animations);
     }
-    return animations;
+    return [animations, 0, 0];
 }
 
 const buildHeap = (arr, animations) => {

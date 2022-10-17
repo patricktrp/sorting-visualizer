@@ -15,5 +15,5 @@ export const insertionSort = (arr) => {
         }
     }
 
-    return animations;
+    return [animations, 0, 0];
 }

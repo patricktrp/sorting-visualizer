@@ -27,7 +27,7 @@ const partition = (items, left, right, animations) => {
 export const quickSort = (arr) => {
     const animations = [];
     quickSortHelper(arr, 0, arr.length - 1, animations);
-    return animations;
+    return [animations, 0, 0];
 }
 
 function quickSortHelper(items, left, right, animations) {
