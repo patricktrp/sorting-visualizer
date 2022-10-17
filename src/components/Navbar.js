@@ -27,6 +27,7 @@ const Navbar = (props) => {
                     <option value="heapSort">Heapsort</option>
                 </Select>
                 <Input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
+                <Input type='range' value={props.animationSpeed} onChange={(e) => props.onChangeAnimationSpeed(e.target.value)} min={10} max={100} disabled={props.isAnimating} />
                 <Button
                     onClick={props.onAnimate}
                     isLoading={props.isAnimating}

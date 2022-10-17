@@ -17,9 +17,10 @@ const App = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [algorithm, setAlgorithm] = useState("bubbleSort");
   const length = numbers.length;
-  const [comparisons, setComparisons] = useState();
-  const [animationDuration, setAnimationDuration] = useState();
-  const [swaps, setSwaps] = useState();
+  const [comparisons, setComparisons] = useState(0);
+  const [animationDuration, setAnimationDuration] = useState(0);
+  const [swaps, setSwaps] = useState(0);
+  const [animationSpeed, setAnimationSpeed] = useState(ANIMATION_SPEED)
 
 
   const changeAlgorithmHandler = (newAlgorithm) => {
@@ -28,10 +29,20 @@ const App = () => {
 
   const shuffleArrayHandler = () => {
     setNumbers(createRandomArrayBySize(length));
+    setComparisons(0);
+    setSwaps(0);
+    setAnimationDuration(0);
   }
 
   const changeArraySizeHandler = (newSize) => {
     setNumbers(createRandomArrayBySize(newSize));
+    setComparisons(0);
+    setSwaps(0);
+    setAnimationDuration(0);
+  }
+
+  const changeAnimationSpeedHandler = (newSpeed) => {
+    setAnimationSpeed(newSpeed);
   }
 
   const sortArrayHandler = () => {
@@ -45,10 +56,10 @@ const App = () => {
     const [animations, comps, swapis] = getAnimations(algorithm, [...numbers]);
     setComparisons(comps);
     setSwaps(swapis);
-    setAnimationDuration((animations.length - 1) * ANIMATION_SPEED);
+    setAnimationDuration((animations.length - 1) * animationSpeed);
 
     for (let i = 0; i < animations.length; i++) {
-      if (i === animations.length - 1) console.log(i * ANIMATION_SPEED);
+      if (i === animations.length - 1) console.log(i * animationSpeed);
       const animation = animations[i];
       switch (animation.type) {
         case 'SWAP':
@@ -61,7 +72,7 @@ const App = () => {
               newNums[j] = tmp;
               return newNums;
             });
-          }, i * ANIMATION_SPEED);
+          }, i * animationSpeed);
           break;
         case 'COLOR':
           setTimeout(() => {
@@ -73,12 +84,12 @@ const App = () => {
               newColors[j] = color;
               return newColors;
             });
-          }, i * ANIMATION_SPEED);
+          }, i * animationSpeed);
           break;
         case 'COLOR_RESET':
           setTimeout(() => {
             setColors({});
-          }, i * ANIMATION_SPEED);
+          }, i * animationSpeed);
           break;
         case 'COLOR_RESET_BY_INDEX':
           const indexes = animation.indexes;
@@ -90,7 +101,7 @@ const App = () => {
               }
               return newColors;
             });
-          }, i * ANIMATION_SPEED);
+          }, i * animationSpeed);
           break;
         case 'SET_VALUE':
           setTimeout(() => {
@@ -99,7 +110,7 @@ const App = () => {
               newNums[animation.index] = animation.newValue;
               return newNums
             });
-          }, i * ANIMATION_SPEED);
+          }, i * animationSpeed);
           break;
         default:
           break;
@@ -108,7 +119,7 @@ const App = () => {
 
     setTimeout(() => {
       finalSortedAnimation();
-    }, animations.length * ANIMATION_SPEED);
+    }, animations.length * animationSpeed);
   }
 
   const finalSortedAnimation = () => {
@@ -137,6 +148,8 @@ const App = () => {
         onAnimate={getAnimationHandler}
         algorithm={algorithm}
         onChangeAlgorithm={changeAlgorithmHandler}
+        animationSpeed={animationSpeed}
+        onChangeAnimationSpeed={changeAnimationSpeedHandler}
       />
       <Flex>
         <Box style={{ width: '13vw' }}>

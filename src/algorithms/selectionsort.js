@@ -2,6 +2,8 @@ import { swap } from '../utils';
 
 export const selectionsort = (arr) => {
     const animations = [];
+    let comparisons = 0;
+    let swaps = 0;
 
     for (let i = 0; i < arr.length - 1; i++) {
         let smallestIdx = i;
@@ -15,6 +17,7 @@ export const selectionsort = (arr) => {
                 type: 'COLOR_RESET_BY_INDEX',
                 indexes: [j]
             })
+            comparisons++;
             if (arr[j] < arr[smallestIdx]) {
                 smallestIdx = j;
             }
@@ -28,27 +31,9 @@ export const selectionsort = (arr) => {
             indexes: [i],
             color: '#138D75'
         });
+        swaps++;
         swap(arr, i, smallestIdx);
     }
 
-    return [animations, 0, 0];;
+    return [animations, comparisons, swaps];;
 }
-
-
-
-// for (let i = 0; i < arr.length - 1; i++) {
-//     for (let j = 0; j < arr.length - i - 1; j++) {
-//         if (arr[j] > arr[j + 1]) {
-//             animations.push({
-//                 type: 'SWAP',
-//                 indexes: [j, j + 1]
-//             });
-//             let tmp = arr[j];
-//             arr[j] = arr[j + 1];
-//             arr[j + 1] = tmp;
-//         }
-//         animations.push({
-//             type: 'COLOR_RESET'
-//         });
-//     }
-// }

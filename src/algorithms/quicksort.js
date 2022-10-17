@@ -1,7 +1,7 @@
 import { swap } from '../utils';
 
 const partition = (items, left, right, animations) => {
-    var pivot = items[Math.floor((right + left) / 2)], //middle element
+    let pivot = items[Math.floor((right + left) / 2)], //middle element
         i = left, //left pointer
         j = right; //right pointer
     while (i <= j) {
@@ -26,8 +26,10 @@ const partition = (items, left, right, animations) => {
 
 export const quickSort = (arr) => {
     const animations = [];
+    let comparisons = 0;
+    let swaps = 0;
     quickSortHelper(arr, 0, arr.length - 1, animations);
-    return [animations, 0, 0];
+    return [animations, comparisons, swaps];
 }
 
 function quickSortHelper(items, left, right, animations) {
