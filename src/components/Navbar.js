@@ -16,7 +16,7 @@ const Navbar = (props) => {
                 <option value="mergeSort">Mergesort</option>
                 <option value="heapSort">Heapsort</option>
             </select>
-            <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={5} max={250} disabled={props.isAnimating} />
+            <input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
             <a target='_blank' rel="noopener noreferrer" href='https://github.com/patricktrp/sorting-visualizer'>
                 <FaGithubSquare />
             </a>

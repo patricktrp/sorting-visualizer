@@ -7,7 +7,7 @@ const Visualizer = (props) => {
     return (
         <div className={styles.visualizer}>
             {props.numbers.map((num, idx) => {
-                return <Bar value={num} key={Math.random()} color={colors.hasOwnProperty(idx) ? colors[idx] : 'base'} />;
+                return <Bar value={num} key={Math.random()} length={props.numbers.length} color={colors.hasOwnProperty(idx) ? colors[idx] : 'base'} />;
             })}
         </div>
     )

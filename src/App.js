@@ -6,7 +6,7 @@ import Visualizer from './components/Visualizer';
 import { createRandomArrayBySize } from './utils';
 
 const INITIAL_ARRAY_LENGTH = 40;
-const ANIMATION_SPEED = 20;
+const ANIMATION_SPEED = 5;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
@@ -127,7 +127,13 @@ const App = () => {
         algorithm={algorithm}
         onChangeAlgorithm={changeAlgorithmHandler}
       />
-      <Visualizer numbers={numbers} colors={colors} />
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: '13vw' }}> </div>
+        <div style={{ width: '74vw', border: '1px solid grey', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
+          <Visualizer numbers={numbers} colors={colors} />
+        </div>
+        <div style={{ width: '13vw' }}> </div>
+      </div>
     </div>
   );
 }

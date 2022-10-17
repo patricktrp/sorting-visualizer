@@ -1,6 +1,8 @@
 
 export const bubbleSort = (arr) => {
     const animations = [];
+    let comparisons = 0;
+    let swaps = 0;
 
     for (let i = 0; i < arr.length - 1; i++) {
         let isAlreadySorted = true;
@@ -10,7 +12,9 @@ export const bubbleSort = (arr) => {
                 indexes: [j, j + 1],
                 color: 'cyan'
             })
+            comparisons++;
             if (arr[j] > arr[j + 1]) {
+                swaps++;
                 animations.push({
                     type: 'SWAP',
                     indexes: [j, j + 1]
@@ -32,7 +36,8 @@ export const bubbleSort = (arr) => {
             color: '#138D75'
         })
     }
-
+    console.log(`Comparisons: ${comparisons}`);
+    console.log(`Swaps: ${swaps}`);
     return animations;
 }
 
