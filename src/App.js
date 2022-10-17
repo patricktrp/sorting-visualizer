@@ -6,7 +6,7 @@ import Visualizer from './components/Visualizer';
 import { createRandomArrayBySize } from './utils';
 
 const INITIAL_ARRAY_LENGTH = 40;
-const ANIMATION_SPEED = 5;
+const ANIMATION_SPEED = 25;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
