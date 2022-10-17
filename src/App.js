@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { getAnimations } from './animations';
-import './App.css';
+import { createRandomArrayBySize } from './utils';
+import { algorithms } from './algorithms/constants';
+import { Flex, Box } from '@chakra-ui/react';
 import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
-import { createRandomArrayBySize } from './utils';
-import { Flex, Box } from '@chakra-ui/react';
 import AlgorithmInfo from './components/AlgorithmInfo';
 import RuntimeInfo from './components/RuntimeInfo';
 
 const INITIAL_ARRAY_LENGTH = 40;
-const ANIMATION_SPEED = 25;
+const INITIAL_ANIMATION_SPEED = 25;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
   const [colors, setColors] = useState({});
   const [isAnimating, setIsAnimating] = useState(false);
-  const [algorithm, setAlgorithm] = useState("bubbleSort");
-  const length = numbers.length;
+  const [algorithm, setAlgorithm] = useState(algorithms.BUBBLE_SORT);
   const [comparisons, setComparisons] = useState(0);
   const [animationDuration, setAnimationDuration] = useState(0);
   const [swaps, setSwaps] = useState(0);
-  const [animationSpeed, setAnimationSpeed] = useState(ANIMATION_SPEED)
+  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED)
 
+  const length = numbers.length;
 
   const changeAlgorithmHandler = (newAlgorithm) => {
     setAlgorithm(newAlgorithm);
@@ -43,12 +43,6 @@ const App = () => {
 
   const changeAnimationSpeedHandler = (newSpeed) => {
     setAnimationSpeed(newSpeed);
-  }
-
-  const sortArrayHandler = () => {
-    setNumbers((oldNumbers) => {
-      return [...oldNumbers].sort((a, b) => a - b);
-    });
   }
 
   const getAnimationHandler = () => {
@@ -139,10 +133,9 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <Box>
       <Navbar onShuffleArray={shuffleArrayHandler}
         isAnimating={isAnimating}
-        onSortArray={sortArrayHandler}
         onChangeArraySize={changeArraySizeHandler}
         currentSize={length}
         onAnimate={getAnimationHandler}
@@ -152,17 +145,17 @@ const App = () => {
         onChangeAnimationSpeed={changeAnimationSpeedHandler}
       />
       <Flex>
-        <Box style={{ width: '13vw' }}>
+        <Box width={'13vw'}>
           <AlgorithmInfo selectedAlgorithm={algorithm} />
         </Box>
-        <Box style={{ width: '74vw', border: '1px solid grey', borderTop: '0px', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
+        <Box width={'74vw'} border={'1px solid grey'} borderTop={'0px'} textAlign={'center'} paddingLeft={'2px'} paddingRight={'2px'}>
           <Visualizer numbers={numbers} colors={colors} />
         </Box>
-        <Box style={{ width: '13vw' }}>
+        <Box width={'13vw'}>
           <RuntimeInfo comparisons={comparisons} duration={animationDuration} swaps={swaps} />
         </Box>
       </Flex>
-    </div>
+    </Box>
   );
 }
 

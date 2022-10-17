@@ -18,7 +18,6 @@ const Navbar = (props) => {
                     colorScheme='teal'
                     variant='outline'
                 >Shuffle</Button>
-                {/* <button disabled={props.isAnimating} onClick={props.onSortArray}>Sort</button> */}
                 <Select disabled={props.isAnimating} value={props.algorithm} onChange={(e) => props.onChangeAlgorithm(e.target.value)}>
                     <option value={algorithms.BUBBLE_SORT}>Bubblesort</option>
                     <option value={algorithms.SELECTION_SORT}>Selection Sort</option>
