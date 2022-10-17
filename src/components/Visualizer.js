@@ -1,15 +1,15 @@
 import Bar from './Bar';
-import styles from './Visualizer.module.css';
+import { Flex } from '@chakra-ui/react';
 
 const Visualizer = (props) => {
     const colors = props.colors;
 
     return (
-        <div className={styles.visualizer}>
+        <Flex justifyContent={'center'} alignItems={'flex-end'} height={'80vh'} >
             {props.numbers.map((num, idx) => {
                 return <Bar value={num} key={Math.random()} length={props.numbers.length} color={colors.hasOwnProperty(idx) ? colors[idx] : 'base'} />;
             })}
-        </div>
+        </Flex>
     )
 };
 

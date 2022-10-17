@@ -155,7 +155,7 @@ const App = () => {
         <Box style={{ width: '13vw' }}>
           <AlgorithmInfo selectedAlgorithm={algorithm} />
         </Box>
-        <Box style={{ width: '74vw', border: '1px solid grey', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
+        <Box style={{ width: '74vw', border: '1px solid grey', borderTop: '0px', textAlign: 'center', paddingLeft: '2px', paddingRight: '2px' }}>
           <Visualizer numbers={numbers} colors={colors} />
         </Box>
         <Box style={{ width: '13vw' }}>

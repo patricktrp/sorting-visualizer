@@ -1,5 +1,3 @@
-import styles from './Bar.module.css';
-
 const Bar = (props) => {
     let widthOfBar;
     let heightOfBar;
@@ -15,7 +13,7 @@ const Bar = (props) => {
     }
 
     return (
-        <div className={`${styles.bar} test`} style={{
+        <div style={{
             width: (widthOfBar - 2) + 'px',
             backgroundColor: props.color === 'base' ? 'salmon' : props.color,
             height: heightOfBar + 'px',

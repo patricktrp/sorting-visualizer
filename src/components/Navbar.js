@@ -2,6 +2,7 @@ import { FaGithubSquare } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { BiSortUp } from 'react-icons/bi';
 import { Button, Select, Input, Flex } from '@chakra-ui/react'
+import { algorithms } from '../algorithms/constants';
 
 const Navbar = (props) => {
     return (
@@ -19,12 +20,12 @@ const Navbar = (props) => {
                 >Shuffle</Button>
                 {/* <button disabled={props.isAnimating} onClick={props.onSortArray}>Sort</button> */}
                 <Select disabled={props.isAnimating} value={props.algorithm} onChange={(e) => props.onChangeAlgorithm(e.target.value)}>
-                    <option value="bubbleSort">Bubblesort</option>
-                    <option value="selectionSort">Selection Sort</option>
-                    <option value="insertionSort">Insertion Sort</option>
-                    <option value="quickSort">Quicksort</option>
-                    <option value="mergeSort">Mergesort</option>
-                    <option value="heapSort">Heapsort</option>
+                    <option value={algorithms.BUBBLE_SORT}>Bubblesort</option>
+                    <option value={algorithms.SELECTION_SORT}>Selection Sort</option>
+                    <option value={algorithms.INSERTION_SORT}>Insertion Sort</option>
+                    <option value={algorithms.QUICK_SORT}>Quicksort</option>
+                    <option value={algorithms.MERGE_SORT}>Mergesort</option>
+                    <option value={algorithms.HEAP_SORT}>Heapsort</option>
                 </Select>
                 <Input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
                 <Input type='range' value={props.animationSpeed} onChange={(e) => props.onChangeAnimationSpeed(e.target.value)} min={10} max={100} disabled={props.isAnimating} />

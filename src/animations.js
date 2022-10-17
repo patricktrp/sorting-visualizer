@@ -4,27 +4,28 @@ import { insertionSort } from "./algorithms/insertionsort";
 import { mergeSort } from "./algorithms/mergesort";
 import { quickSort } from "./algorithms/quicksort";
 import { selectionsort } from "./algorithms/selectionsort";
+import { algorithms } from "./algorithms/constants";
 
 export const getAnimations = (algorithm, array) => {
     let animations;
 
     switch (algorithm) {
-        case 'bubbleSort':
+        case algorithms.BUBBLE_SORT:
             animations = bubbleSort(array);
             break;
-        case 'selectionSort':
+        case algorithms.SELECTION_SORT:
             animations = selectionsort(array);
             break;
-        case 'heapSort':
+        case algorithms.HEAP_SORT:
             animations = heapSort(array);
             break;
-        case 'quickSort':
+        case algorithms.QUICK_SORT:
             animations = quickSort(array);
             break;
-        case 'insertionSort':
+        case algorithms.INSERTION_SORT:
             animations = insertionSort(array);
             break;
-        case 'mergeSort':
+        case algorithms.MERGE_SORT:
             animations = mergeSort(array);
             break;
         default:
