@@ -1,4 +1,3 @@
-import styles from './Navbar.module.css';
 import { FaGithubSquare } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { BiSortUp } from 'react-icons/bi';
