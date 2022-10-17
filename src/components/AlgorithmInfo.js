@@ -1,3 +1,5 @@
+import { Box } from '@chakra-ui/react';
+
 const algorithmData = {
     'bubbleSort': {
         'name': 'Bubblesort',
@@ -39,20 +41,21 @@ const algorithmData = {
 
 const AlgorithmInfo = (props) => {
     return (
-        <div>
-            <p>
-                {algorithmData[props.selectedAlgorithm].name}
-            </p>
-            <p>
-                WC: {algorithmData[props.selectedAlgorithm].wc_time_complexity}
-            </p>
-            <p>
-                AC: {algorithmData[props.selectedAlgorithm].ac_time_complexity}
-            </p>
-            <p>
-                BC: {algorithmData[props.selectedAlgorithm].bc_time_complexity}
-            </p>
-        </div>
+        <Box>
+            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'15px'} padding={'15px'}>
+                <p color='#ddd'>Time Complexity</p>
+                <p>Best Case: O(N)</p>
+                <p>Average Case: O(N<sup>2</sup>)</p>
+                <p>Worst Case: O(N<sup>2</sup>)</p>
+            </Box>
+            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'15px'} padding={'15px'}>
+                <p color='#ddd'>Space Complexity</p>
+                <p>Best Case: O(N)</p>
+                <p>Average Case: O(N<sup>2</sup>)</p>
+                <p>Worst Case: O(N<sup>2</sup>)</p>
+            </Box>
+
+        </Box>
     )
 }
 

@@ -6,7 +6,7 @@ import { algorithms } from '../algorithms/constants';
 
 const Navbar = (props) => {
     return (
-        <Flex justifyContent={'space-between'} alignItems={'center'} marginBottom={'20px'} height={'6vh'} paddingRight={20} paddingLeft={20} backgroundColor={'rgb(31,31,31)'}>
+        <Flex justifyContent={'space-between'} alignItems={'center'} height={'6vh'} paddingRight={20} paddingLeft={20} backgroundColor={'rgb(31,31,31)'}>
             <Flex>
                 <BiSortUp size={50} color={'white'} />
             </Flex>
@@ -15,7 +15,7 @@ const Navbar = (props) => {
                 <Button
                     onClick={props.onShuffleArray}
                     disabled={props.isAnimating}
-                    colorScheme='teal'
+                    color={'white'}
                     variant='outline'
                 >Shuffle</Button>
                 <Select disabled={props.isAnimating} value={props.algorithm} onChange={(e) => props.onChangeAlgorithm(e.target.value)}>
@@ -32,7 +32,7 @@ const Navbar = (props) => {
                     onClick={props.onAnimate}
                     isLoading={props.isAnimating}
                     loadingText='Animating'
-                    colorScheme='teal'
+                    color={'white'}
                     variant='outline'
                     spinnerPlacement='end'>Animate</Button>
             </Flex>
