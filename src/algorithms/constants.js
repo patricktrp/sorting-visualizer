@@ -12,5 +12,13 @@ export const algorithms = {
     MERGE_SORT,
     HEAP_SORT,
     QUICK_SORT
-}
+};
+
+const COMPARING = '#FFA98F';
+const INORDER = '#FF8C69';
+
+export const colors = {
+    COMPARING,
+    INORDER
+};
 

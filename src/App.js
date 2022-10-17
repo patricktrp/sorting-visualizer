@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Visualizer from './components/Visualizer';
 import AlgorithmInfo from './components/AlgorithmInfo';
 import RuntimeInfo from './components/RuntimeInfo';
+import { types } from './animations';
 
 const INITIAL_ARRAY_LENGTH = 40;
 const INITIAL_ANIMATION_SPEED = 25;
@@ -15,11 +16,11 @@ const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
   const [colors, setColors] = useState({});
   const [isAnimating, setIsAnimating] = useState(false);
+  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED);
   const [algorithm, setAlgorithm] = useState(algorithms.BUBBLE_SORT);
   const [comparisons, setComparisons] = useState(0);
   const [animationDuration, setAnimationDuration] = useState(0);
   const [swaps, setSwaps] = useState(0);
-  const [animationSpeed, setAnimationSpeed] = useState(INITIAL_ANIMATION_SPEED)
 
   const length = numbers.length;
 
@@ -56,7 +57,7 @@ const App = () => {
       if (i === animations.length - 1) console.log(i * animationSpeed);
       const animation = animations[i];
       switch (animation.type) {
-        case 'SWAP':
+        case types.SWAP:
           setTimeout(() => {
             const [i, j] = animation.indexes;
             setNumbers((oldNums) => {
@@ -68,7 +69,7 @@ const App = () => {
             });
           }, i * animationSpeed);
           break;
-        case 'COLOR':
+        case types.COLOR:
           setTimeout(() => {
             const [i, j] = animation.indexes;
             const color = animation.color;
@@ -80,12 +81,12 @@ const App = () => {
             });
           }, i * animationSpeed);
           break;
-        case 'COLOR_RESET':
+        case types.COLOR_RESET:
           setTimeout(() => {
             setColors({});
           }, i * animationSpeed);
           break;
-        case 'COLOR_RESET_BY_INDEX':
+        case types.COLOR_RESET_BY_INDEX:
           const indexes = animation.indexes;
           setTimeout(() => {
             setColors((oldColors) => {
@@ -97,7 +98,7 @@ const App = () => {
             });
           }, i * animationSpeed);
           break;
-        case 'SET_VALUE':
+        case types.SET_VALUE:
           setTimeout(() => {
             setNumbers(oldNumbers => {
               const newNums = [...oldNumbers];
@@ -110,7 +111,6 @@ const App = () => {
           break;
       }
     }
-
     setTimeout(() => {
       finalSortedAnimation();
     }, animations.length * animationSpeed);
@@ -121,7 +121,7 @@ const App = () => {
       setTimeout(() => {
         setColors((oldColors) => {
           const newColors = { ...oldColors };
-          newColors[i] = 'lightgreen';
+          newColors[i] = 'rgb(3,218,198)';
           return newColors;
         });
       }, 30 * i);
@@ -133,7 +133,7 @@ const App = () => {
   }
 
   return (
-    <Box>
+    <Box backgroundColor={'rgb(18,18,18)'} height={'100vh'}>
       <Navbar onShuffleArray={shuffleArrayHandler}
         isAnimating={isAnimating}
         onChangeArraySize={changeArraySizeHandler}
@@ -148,7 +148,7 @@ const App = () => {
         <Box width={'13vw'}>
           <AlgorithmInfo selectedAlgorithm={algorithm} />
         </Box>
-        <Box width={'74vw'} border={'1px solid grey'} borderTop={'0px'} textAlign={'center'} paddingLeft={'2px'} paddingRight={'2px'}>
+        <Box width={'74vw'} textAlign={'center'} paddingLeft={'2px'} paddingRight={'2px'}>
           <Visualizer numbers={numbers} colors={colors} />
         </Box>
         <Box width={'13vw'}>

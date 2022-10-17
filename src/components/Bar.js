@@ -15,9 +15,11 @@ const Bar = (props) => {
     return (
         <div style={{
             width: (widthOfBar - 2) + 'px',
-            backgroundColor: props.color === 'base' ? 'salmon' : props.color,
+            backgroundColor: props.color === 'base' ? 'rgb(187,134,252)' : props.color,
             height: heightOfBar + 'px',
-            marginRight: '2px'
+            marginRight: '2px',
+            borderTopLeftRadius: '5px',
+            borderTopRightRadius: '5px'
         }}>
 
         </div>

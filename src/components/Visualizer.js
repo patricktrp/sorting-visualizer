@@ -5,7 +5,7 @@ const Visualizer = (props) => {
     const colors = props.colors;
 
     return (
-        <Flex justifyContent={'center'} alignItems={'flex-end'} height={'80vh'} >
+        <Flex justifyContent={'center'} alignItems={'flex-end'} height={'80vh'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} paddingLeft={'20px'} paddingRight={'20px'} paddingBottom={'30px'}>
             {props.numbers.map((num, idx) => {
                 return <Bar value={num} key={Math.random()} length={props.numbers.length} color={colors.hasOwnProperty(idx) ? colors[idx] : 'base'} />;
             })}

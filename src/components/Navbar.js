@@ -6,9 +6,9 @@ import { algorithms } from '../algorithms/constants';
 
 const Navbar = (props) => {
     return (
-        <Flex justifyContent={'space-between'} alignItems={'center'} height={'6vh'} borderBottom={'1px solid grey'} paddingRight={20} paddingLeft={20}>
+        <Flex justifyContent={'space-between'} alignItems={'center'} marginBottom={'20px'} height={'6vh'} paddingRight={20} paddingLeft={20} backgroundColor={'rgb(31,31,31)'}>
             <Flex>
-                <BiSortUp size={50} color={'#c2203f'} />
+                <BiSortUp size={50} color={'white'} />
             </Flex>
 
             <Flex gap={5}>
@@ -27,7 +27,7 @@ const Navbar = (props) => {
                     <option value={algorithms.HEAP_SORT}>Heapsort</option>
                 </Select>
                 <Input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
-                <Input type='range' value={props.animationSpeed} onChange={(e) => props.onChangeAnimationSpeed(e.target.value)} min={10} max={100} disabled={props.isAnimating} />
+                <Input type='range' value={props.animationSpeed} onChange={(e) => props.onChangeAnimationSpeed(e.target.value)} min={10} max={150} disabled={props.isAnimating} />
                 <Button
                     onClick={props.onAnimate}
                     isLoading={props.isAnimating}
@@ -39,10 +39,10 @@ const Navbar = (props) => {
 
             <Flex>
                 <a target='_blank' rel="noopener noreferrer" href='https://github.com/patricktrp/sorting-visualizer'>
-                    <FaGithubSquare size={40} color={'#c2203f'} />
+                    <FaGithubSquare size={40} color={'white'} />
                 </a>
                 <a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/patrick-treppmann/'>
-                    <FaLinkedin size={40} color={'#c2203f'} />
+                    <FaLinkedin size={40} color={'white'} />
                 </a>
             </Flex>
         </Flex >

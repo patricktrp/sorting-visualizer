@@ -32,4 +32,18 @@ export const getAnimations = (algorithm, array) => {
             break;
     }
     return animations;
-}
+};
+
+const SWAP = 'SWAP';
+const COLOR = 'COLOR';
+const COLOR_RESET = 'COLOR_RESET';
+const COLOR_RESET_BY_INDEX = 'COLOR_RESET_BY_INDEX';
+const SET_VALUE = 'SET_VALUE';
+
+export const types = {
+    SWAP,
+    COLOR,
+    COLOR_RESET,
+    COLOR_RESET_BY_INDEX,
+    SET_VALUE
+};
