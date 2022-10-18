@@ -9,7 +9,9 @@ const Bar = (props) => {
     if (typeof window.innerHeight !== 'undefined') {
         let viewPortHeight = window.innerHeight;
         const maxValue = props.length - 1;
-        heightOfBar = viewPortHeight * 0.8 / (maxValue + 7) * (props.value + 2);
+        // heightOfBar = viewPortHeight * 0.8 / (maxValue + 20) * (props.value + 2);
+        heightOfBar = viewPortHeight * 0.8 / (maxValue + 25) * (props.value + 2);
+        // heightOfBar = (viewPortHeight - 40) * 0.8 / (maxValue) * (props.value);
     }
 
     return (

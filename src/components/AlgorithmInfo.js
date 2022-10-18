@@ -1,4 +1,5 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import { Slider, SliderTrack, SliderFilledTrack, SliderThumb } from '@chakra-ui/react';
 
 // const algorithmData = {
 //     'bubbleSort': {
@@ -42,20 +43,33 @@ import { Box } from '@chakra-ui/react';
 const AlgorithmInfo = (props) => {
     return (
         <Box>
-            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'15px'} padding={'15px'}>
-                <p color='#ddd'>Time Complexity</p>
-                <p>Best Case: O(N)</p>
-                <p>Average Case: O(N<sup>2</sup>)</p>
-                <p>Worst Case: O(N<sup>2</sup>)</p>
+            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+                <Stat>
+                    <StatLabel>Time Complexity</StatLabel>
+                    <StatNumber>Best Case: O(N)</StatNumber>
+                    <StatNumber>Average Case: O(N<sup>2</sup>)</StatNumber>
+                    <StatNumber>Worst Case: O(N<sup>2</sup>)</StatNumber>
+                </Stat>
             </Box>
-            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'15px'} padding={'15px'}>
-                <p color='#ddd'>Space Complexity</p>
-                <p>Best Case: O(N)</p>
-                <p>Average Case: O(N<sup>2</sup>)</p>
-                <p>Worst Case: O(N<sup>2</sup>)</p>
+            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+                Array Size
+                <Slider value={props.currentSize} onChange={props.onChangeArraySize} min={10} max={300}>
+                    <SliderTrack>
+                        <SliderFilledTrack backgroundColor={'rgb(187,134,252)'} />
+                    </SliderTrack>
+                    <SliderThumb />
+                </Slider>
             </Box>
-
-        </Box>
+            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+                Sorting Speed
+                <Slider value={props.animationSpeed} onChange={props.onChangeAnimationSpeed} min={10} max={100}>
+                    <SliderTrack>
+                        <SliderFilledTrack backgroundColor={'rgb(187,134,252)'} />
+                    </SliderTrack>
+                    <SliderThumb />
+                </Slider>
+            </Box>
+        </Box >
     )
 }
 

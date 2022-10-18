@@ -54,7 +54,6 @@ const App = () => {
     setAnimationDuration((animations.length - 1) * animationSpeed);
 
     for (let i = 0; i < animations.length; i++) {
-      if (i === animations.length - 1) console.log(i * animationSpeed);
       const animation = animations[i];
       switch (animation.type) {
         case types.SWAP:
@@ -112,25 +111,36 @@ const App = () => {
       }
     }
     setTimeout(() => {
-      finalSortedAnimation();
+      setColors((oldColors) => {
+        const newColors = { ...oldColors };
+        for (let i = 0; i < length; i++) {
+          newColors[i] = 'rgb(3,218,198)'
+        }
+        return newColors;
+      });
     }, animations.length * animationSpeed);
-  }
 
-  const finalSortedAnimation = () => {
-    for (let i = 0; i < numbers.length; i++) {
-      setTimeout(() => {
-        setColors((oldColors) => {
-          const newColors = { ...oldColors };
-          newColors[i] = 'rgb(3,218,198)';
-          return newColors;
-        });
-      }, 30 * i);
-    }
     setTimeout(() => {
       setColors({});
       setIsAnimating(false);
-    }, (45 * numbers.length));
+    }, (animations.length * animationSpeed) + 2000);
   }
+
+  // const finalSortedAnimation = () => {
+  //   for (let i = 0; i < numbers.length; i++) {
+  //     setTimeout(() => {
+  //       setColors((oldColors) => {
+  //         const newColors = { ...oldColors };
+  //         newColors[i] = 'rgb(3,218,198)';
+  //         return newColors;
+  //       });
+  //     }, 30 * i);
+  //   }
+  //   setTimeout(() => {
+  //     setColors({});
+  //     setIsAnimating(false);
+  //   }, (45 * numbers.length));
+  // }
 
   return (
     <Box backgroundColor={'rgb(18,18,18)'} height={'100vh'}>
@@ -144,9 +154,13 @@ const App = () => {
         animationSpeed={animationSpeed}
         onChangeAnimationSpeed={changeAnimationSpeedHandler}
       />
-      <Flex>
+      <Flex height={'80vh'}>
         <Box width={'13vw'}>
-          <AlgorithmInfo selectedAlgorithm={algorithm} />
+          <AlgorithmInfo selectedAlgorithm={algorithm}
+            currentSize={length}
+            onChangeArraySize={changeArraySizeHandler}
+            animationSpeed={animationSpeed}
+            onChangeAnimationSpeed={changeAnimationSpeedHandler} />
         </Box>
         <Box width={'74vw'} textAlign={'center'} paddingLeft={'2px'} paddingRight={'2px'}>
           <Visualizer numbers={numbers} colors={colors} />
@@ -155,6 +169,10 @@ const App = () => {
           <RuntimeInfo comparisons={comparisons} duration={animationDuration} swaps={swaps} />
         </Box>
       </Flex>
+      <Box height={'12vh'} padding={'5vh'} textAlign={'center'} color={'#ddd'} fontSize={'small'}>
+        <hr style={{ margin: 'auto', maxWidth: '40vw', color: '#ddd' }} />
+        <p>&copy; Patrick Treppmann</p>
+      </Box>
     </Box>
   );
 }
