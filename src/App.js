@@ -9,7 +9,7 @@ import AlgorithmInfo from './components/AlgorithmInfo';
 import RuntimeInfo from './components/RuntimeInfo';
 import { types } from './animations';
 
-const INITIAL_ARRAY_LENGTH = 40;
+const INITIAL_ARRAY_LENGTH = 80;
 const INITIAL_ANIMATION_SPEED = 25;
 
 const App = () => {
