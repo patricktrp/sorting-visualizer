@@ -1,5 +1,7 @@
 import { Box, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { Slider, SliderTrack, SliderFilledTrack, SliderThumb } from '@chakra-ui/react';
+import Card from './UI/Card';
+import colors from '../colors';
 
 // const algorithmData = {
 //     'bubbleSort': {
@@ -43,32 +45,32 @@ import { Slider, SliderTrack, SliderFilledTrack, SliderThumb } from '@chakra-ui/
 const AlgorithmInfo = (props) => {
     return (
         <Box>
-            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+            <Card>
                 <Stat>
                     <StatLabel>Time Complexity</StatLabel>
                     <StatNumber>Best Case: O(N)</StatNumber>
                     <StatNumber>Average Case: O(N<sup>2</sup>)</StatNumber>
                     <StatNumber>Worst Case: O(N<sup>2</sup>)</StatNumber>
                 </Stat>
-            </Box>
-            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+            </Card>
+            <Card>
                 Array Size
-                <Slider value={props.currentSize} onChange={props.onChangeArraySize} min={10} max={300}>
+                <Slider value={props.currentSize} onChange={props.onChangeArraySize} min={10} max={300} disabled={props.isAnimating}>
                     <SliderTrack>
-                        <SliderFilledTrack backgroundColor={'rgb(187,134,252)'} />
+                        <SliderFilledTrack backgroundColor={colors.primaryColor} />
                     </SliderTrack>
                     <SliderThumb />
                 </Slider>
-            </Box>
-            <Box color={'white'} backgroundColor={'rgb(31,31,31)'} borderRadius={'15px'} margin={'0 15px 15px 15px'} padding={'15px'}>
+            </Card>
+            <Card>
                 Sorting Speed
-                <Slider value={props.animationSpeed} onChange={props.onChangeAnimationSpeed} min={10} max={100}>
+                <Slider value={props.animationSpeed} onChange={props.onChangeAnimationSpeed} min={10} max={200} disabled={props.isAnimating}>
                     <SliderTrack>
-                        <SliderFilledTrack backgroundColor={'rgb(187,134,252)'} />
+                        <SliderFilledTrack backgroundColor={colors.primaryColor} />
                     </SliderTrack>
                     <SliderThumb />
                 </Slider>
-            </Box>
+            </Card>
         </Box >
     )
 }

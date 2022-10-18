@@ -1,3 +1,5 @@
+import colors from '../colors';
+
 const Bar = (props) => {
     let widthOfBar;
     let heightOfBar;
@@ -17,7 +19,7 @@ const Bar = (props) => {
     return (
         <div style={{
             width: (widthOfBar - 2) + 'px',
-            backgroundColor: props.color === 'base' ? 'rgb(187,134,252)' : props.color,
+            backgroundColor: props.color === 'base' ? colors.primaryColor : props.color,
             height: heightOfBar + 'px',
             marginRight: '2px',
             borderTopLeftRadius: '5px',

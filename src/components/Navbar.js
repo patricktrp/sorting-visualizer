@@ -3,6 +3,7 @@ import { FaLinkedin } from 'react-icons/fa';
 import { BiSortUp } from 'react-icons/bi';
 import { Button, Select, Flex } from '@chakra-ui/react'
 import { algorithms } from '../algorithms/constants';
+import colors from '../colors';
 
 const Navbar = (props) => {
     return (
@@ -17,6 +18,10 @@ const Navbar = (props) => {
                     width='200px'
                     disabled={props.isAnimating}
                     backgroundColor='white'
+                    _hover={{
+                        background: colors.primaryColorShade,
+                        color: 'white'
+                    }}
                 >Shuffle</Button>
                 <Select color='white' disabled={props.isAnimating} value={props.algorithm} onChange={(e) => props.onChangeAlgorithm(e.target.value)}>
                     <option className='test' style={{ backgroundColor: 'rgb(31,31,31)' }} value={algorithms.BUBBLE_SORT}>Bubblesort</option>
@@ -46,7 +51,11 @@ const Navbar = (props) => {
                     width='200px'
                     backgroundColor='white'
                     // loadingText='Animating'
-                    spinnerPlacement='end'>Animate</Button>
+                    _hover={{
+                        background: colors.primaryColorShade,
+                        color: 'white',
+                    }}
+                >Animate</Button>
             </Flex>
 
             <Flex>

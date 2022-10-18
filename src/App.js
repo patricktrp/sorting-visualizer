@@ -8,9 +8,10 @@ import Visualizer from './components/Visualizer';
 import AlgorithmInfo from './components/AlgorithmInfo';
 import RuntimeInfo from './components/RuntimeInfo';
 import { types } from './animations';
+import colorConstants from './colors';
 
-const INITIAL_ARRAY_LENGTH = 80;
-const INITIAL_ANIMATION_SPEED = 25;
+const INITIAL_ARRAY_LENGTH = 145;
+const INITIAL_ANIMATION_SPEED = 100;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
@@ -23,6 +24,7 @@ const App = () => {
   const [swaps, setSwaps] = useState(0);
 
   const length = numbers.length;
+  const modifiedAnimationSpeed = 210 - animationSpeed;
 
   const changeAlgorithmHandler = (newAlgorithm) => {
     setAlgorithm(newAlgorithm);
@@ -51,7 +53,7 @@ const App = () => {
     const [animations, comps, swapis] = getAnimations(algorithm, [...numbers]);
     setComparisons(comps);
     setSwaps(swapis);
-    setAnimationDuration((animations.length - 1) * animationSpeed);
+    setAnimationDuration((animations.length - 1) * modifiedAnimationSpeed);
 
     for (let i = 0; i < animations.length; i++) {
       const animation = animations[i];
@@ -66,7 +68,7 @@ const App = () => {
               newNums[j] = tmp;
               return newNums;
             });
-          }, i * animationSpeed);
+          }, i * modifiedAnimationSpeed);
           break;
         case types.COLOR:
           setTimeout(() => {
@@ -78,12 +80,12 @@ const App = () => {
               newColors[j] = color;
               return newColors;
             });
-          }, i * animationSpeed);
+          }, i * modifiedAnimationSpeed);
           break;
         case types.COLOR_RESET:
           setTimeout(() => {
             setColors({});
-          }, i * animationSpeed);
+          }, i * modifiedAnimationSpeed);
           break;
         case types.COLOR_RESET_BY_INDEX:
           const indexes = animation.indexes;
@@ -95,7 +97,7 @@ const App = () => {
               }
               return newColors;
             });
-          }, i * animationSpeed);
+          }, i * modifiedAnimationSpeed);
           break;
         case types.SET_VALUE:
           setTimeout(() => {
@@ -104,7 +106,7 @@ const App = () => {
               newNums[animation.index] = animation.newValue;
               return newNums
             });
-          }, i * animationSpeed);
+          }, i * modifiedAnimationSpeed);
           break;
         default:
           break;
@@ -118,12 +120,12 @@ const App = () => {
         }
         return newColors;
       });
-    }, animations.length * animationSpeed);
+    }, (animations.length * modifiedAnimationSpeed) + 250);
 
     setTimeout(() => {
       setColors({});
       setIsAnimating(false);
-    }, (animations.length * animationSpeed) + 2000);
+    }, (animations.length * modifiedAnimationSpeed) + 2250);
   }
 
   // const finalSortedAnimation = () => {
@@ -143,7 +145,7 @@ const App = () => {
   // }
 
   return (
-    <Box backgroundColor={'rgb(18,18,18)'} height={'100vh'}>
+    <Box backgroundColor={colorConstants.primaryBackground} height={'100vh'}>
       <Navbar onShuffleArray={shuffleArrayHandler}
         isAnimating={isAnimating}
         onChangeArraySize={changeArraySizeHandler}
@@ -156,7 +158,9 @@ const App = () => {
       />
       <Flex height={'80vh'}>
         <Box width={'13vw'}>
-          <AlgorithmInfo selectedAlgorithm={algorithm}
+          <AlgorithmInfo
+            isAnimating={isAnimating}
+            selectedAlgorithm={algorithm}
             currentSize={length}
             onChangeArraySize={changeArraySizeHandler}
             animationSpeed={animationSpeed}
