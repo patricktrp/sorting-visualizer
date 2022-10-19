@@ -22,7 +22,9 @@ export const heapSort = (arr) => {
 
 const buildHeap = (arr, animations) => {
     for (let i = Math.floor(arr.length / 2 - 1); i >= 0; i--) {
-        heapifyDown(arr, i, arr.length - 1, animations);
+        heapifyDown(arr, i, arr.length, animations);
+        // i dont know why this was wrong but now its right lol
+        // heapifyDown(arr, i, arr.length - 1, animations);
     }
 }
 

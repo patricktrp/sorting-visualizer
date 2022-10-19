@@ -12,6 +12,7 @@ import colorConstants from './colors';
 
 const INITIAL_ARRAY_LENGTH = 145;
 const INITIAL_ANIMATION_SPEED = 100;
+// const MAX_ANIMATION_SPEED = 5;
 
 const App = () => {
   const [numbers, setNumbers] = useState(createRandomArrayBySize(INITIAL_ARRAY_LENGTH));
@@ -24,7 +25,7 @@ const App = () => {
   const [swaps, setSwaps] = useState(0);
 
   const length = numbers.length;
-  const modifiedAnimationSpeed = 210 - animationSpeed;
+  const modifiedAnimationSpeed = 302 - animationSpeed;
 
   const changeAlgorithmHandler = (newAlgorithm) => {
     setAlgorithm(newAlgorithm);

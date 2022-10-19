@@ -64,7 +64,7 @@ const AlgorithmInfo = (props) => {
             </Card>
             <Card>
                 Sorting Speed
-                <Slider value={props.animationSpeed} onChange={props.onChangeAnimationSpeed} min={10} max={200} disabled={props.isAnimating}>
+                <Slider value={props.animationSpeed} onChange={props.onChangeAnimationSpeed} min={2} max={300} disabled={props.isAnimating}>
                     <SliderTrack>
                         <SliderFilledTrack backgroundColor={colors.primaryColor} />
                     </SliderTrack>
