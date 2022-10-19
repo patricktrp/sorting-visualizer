@@ -4,7 +4,9 @@ const partition = (items, left, right, animations) => {
     let pivot = items[Math.floor((right + left) / 2)], //middle element
         i = left, //left pointer
         j = right; //right pointer
-    while (i <= j) {
+
+        while (i <= j) {
+
         while (items[i] < pivot) {
             i++;
         }
