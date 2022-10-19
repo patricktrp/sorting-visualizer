@@ -8,12 +8,12 @@ const Navbar = (props) => {
     return (
         <Flex justifyContent={'space-between'} alignItems={'center'} height={'6vh'} paddingRight={20} paddingLeft={20} backgroundColor={'rgb(31,31,31)'} marginBottom={'2vh'}>
             <Flex>
-                <BiSortUp size={'3.5vh'} color={'white'} />
+                <BiSortUp size={'4vh'} color={'white'} />
             </Flex>
 
             <Flex gap={5} alignItems={'center'}>
                 <Button
-                    height='3vh'
+                    height='3.5vh'
                     onClick={props.onShuffleArray}
                     width='200px'
                     disabled={props.isAnimating}
@@ -24,7 +24,7 @@ const Navbar = (props) => {
                     }}
                 >Shuffle</Button>
                 <Select
-                    height='3vh'
+                    height='3.5vh'
                     color='white'
                     disabled={props.isAnimating}
                     value={props.algorithm}
@@ -51,7 +51,7 @@ const Navbar = (props) => {
                 {/* <Input type='range' value={props.currentSize} onChange={(e) => props.onChangeArraySize(e.target.value)} min={10} max={300} disabled={props.isAnimating} />
                 <Input type='range' value={props.animationSpeed} onChange={(e) => props.onChangeAnimationSpeed(e.target.value)} min={10} max={150} disabled={props.isAnimating} /> */}
                 <Button
-                    height='3vh'
+                    height='3.5vh'
                     maxHeight={'50px'}
                     onClick={props.onAnimate}
                     isLoading={props.isAnimating}
@@ -67,10 +67,10 @@ const Navbar = (props) => {
 
             <Flex>
                 <a target='_blank' rel="noopener noreferrer" href='https://github.com/patricktrp/sorting-visualizer'>
-                    <FaGithubSquare size={'3.5vh'} color={'white'} />
+                    <FaGithubSquare size={'4vh'} color={'white'} />
                 </a>
                 <a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/patrick-treppmann/'>
-                    <FaLinkedin size={'3.5vh'} color={'white'} />
+                    <FaLinkedin size={'4vh'} color={'white'} />
                 </a>
             </Flex>
         </Flex >
