@@ -67,10 +67,10 @@ const Navbar = (props) => {
 
             <Flex>
                 <a target='_blank' rel="noopener noreferrer" href='https://github.com/patricktrp/sorting-visualizer'>
-                    <FaGithubSquare size={'4vh'} color={'white'} />
+                    <FaGithubSquare size={'3.7vh'} color={'white'} />
                 </a>
                 <a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/patrick-treppmann/'>
-                    <FaLinkedin size={'4vh'} color={'white'} />
+                    <FaLinkedin size={'3.7vh'} color={'white'} />
                 </a>
             </Flex>
         </Flex >
