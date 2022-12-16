@@ -6,6 +6,7 @@ const primaryColorShade = 'rgb(223,198,254)';
 
 const green = '#BCE29E';
 const red = '#FF8787';
+const yellow = '#FDFD96';
 
 const comparing = '#FFA98F';
 const inorder = '#FF8C69';
@@ -15,10 +16,11 @@ const colors = {
     secondaryBackground,
     primaryColor,
     primaryColorShade,
-    red, 
-    green, 
+    red,
+    green,
     comparing,
-    inorder
+    inorder,
+    yellow
 }
 
 export default colors;
